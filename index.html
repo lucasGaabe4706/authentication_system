@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Sistema de autenticação</title>
+</head>
+
+<body>
+    <main>
+        <header>
+
+            <h1>Sistema de autenticação</h1>
+            <p>Seja bem-vindo(a)</p>
+        </header>
+
+        <form action="submit" id="login-form">
+            <label for="email">
+                E-mail:
+            </label>
+            <input type="email" placeholder="teste@email.com" name="email" id="email">
+            <label for="password">
+                Senha:
+            </label>
+            <input type="password" name="password" id="password">
+            <button>Entrar</button>
+        </form>
+    </main>
+</body>
+
+<script>
+    const formulario = document.getElementById('login-form');
+    const emailInput = document.getElementById('email');
+    const passwordInput = document.getElementById('password')
+
+
+    formulario.addEventListener('submit', function (event) {
+        event.preventDefault();
+        const emailDigitado = emailInput.value;
+        const senhaDigitada = passwordInput.value;
+
+        if (emailDigitado.trim() === "") {
+            alert("O e-mail não pode estar vazio")
+            return;
+        } console.log('Email:' + emailDigitado);
+
+        if (senhaDigitada.trim() === "") {
+            alert("A senha não pode estar vazia")
+            return;
+        } console.log('Senha:' + senhaDigitada);
+
+
+
+
+    })
+
+</script>
+
+</html>
