@@ -1,9 +1,17 @@
 const express = require("express");
 const { timeStamp } = require("node:console");
 const { uptime } = require("node:process");
+const cors = require("cors");
 const app = express();
+
 const PORT = 3000;
 app.use(express.json());
+
+const corsOption = {
+	origin: "http://127.0.0.1:5500",
+	optionsSuccessStatus: 200,
+};
+app.use(cors(corsOption));
 
 app.get("/health", (req, res) => {
 	res.status(200).json({
@@ -20,15 +28,15 @@ const EMAIL_VALIDO = "admin@admin.com";
 const SENHA_VALIDA = "123456";
 
 app.post("/login", (req, res) => {
-	const { email, password } = req.body;
+	const { email, senha } = req.body;
 
-	if (!email || !password) {
+	if (!email || !senha) {
 		return res.status(400).json({
 			erro: "Usuário e senha são obrigatórios",
 		});
 	} //validação de campo vazio. Manter dupla validação ou obrigação do back?
 
-	if (email === EMAIL_VALIDO && password === SENHA_VALIDA) {
+	if (email === EMAIL_VALIDO && senha === SENHA_VALIDA) {
 		return res
 			.status(200)
 			.json({ sucesso: true, mensagem: "login realizado com sucesso" });

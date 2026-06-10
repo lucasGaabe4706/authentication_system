@@ -18,6 +18,7 @@
   "homepage": "https://github.com/lucasGaabe4706/autentication_system#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.6",
     "express": "^5.2.1"
   }
 }

@@ -43,18 +43,44 @@
         if (emailDigitado.trim() === "") {
             alert("O e-mail não pode estar vazio")
             return;
-        } console.log('Email:' + emailDigitado);
-
-        if (senhaDigitada.trim() === "") {
+        } if (senhaDigitada.trim() === "") {
             alert("A senha não pode estar vazia")
             return;
-        } console.log('Senha:' + senhaDigitada);
-
+        } else {
+            enviarDados(emailDigitado, senhaDigitada)
+        }
 
 
 
     })
 
+    async function enviarDados(email, senha) {
+        const url = 'http://localhost:3000/login'
+
+        const dados = {
+            email,
+            senha
+        };
+
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(dados)
+
+            });
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`)
+            }
+
+            const data = await response.json();
+            console.log('Login feito com sucesso')
+        } catch (error) {
+            console.error('Falha no login')
+        }
+    }
 </script>
 
 </html>
