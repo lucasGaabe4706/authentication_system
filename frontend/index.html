@@ -26,6 +26,9 @@
             <input type="password" name="password" id="password">
             <button>Entrar</button>
         </form>
+
+        <div id="toast" style="display: none;">
+        </div>
     </main>
 </body>
 
@@ -33,7 +36,7 @@
     const formulario = document.getElementById('login-form');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password')
-
+    const toast = document.getElementById('toast')
 
     formulario.addEventListener('submit', function (event) {
         event.preventDefault();
@@ -62,25 +65,37 @@
             senha
         };
 
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(dados)
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(dados)
+        });
 
-            });
-            if (!response.ok) {
-                throw new Error(`HTTP error! Status: ${response.status}`)
-            }
+        const data = await response.json();
 
-            const data = await response.json();
-            console.log('Login feito com sucesso')
-        } catch (error) {
-            console.error('Falha no login')
+        if (response.ok) {
+            window.location.href = 'home.html'
+        } else {
+            exibirMensagem(data.erro)
         }
+
+
+
+
     }
+
+    function exibirMensagem(mensagem) {
+        toast.style.display = "block";
+        toast.textContent = mensagem
+
+        setTimeout(function () {
+            toast.style.display = "none";
+
+        }, 3000);
+    }
+
 </script>
 
 </html>
