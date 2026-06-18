@@ -1,6 +1,6 @@
 # Authentication System
 
-Projeto desenvolvido com o objetivo de praticar conceitos fundamentais de desenvolvimento web sem depender de geração automática de código.
+Projeto desenvolvido com o objetivo de praticar conceitos fundamentais de desenvolvimento web
 
 ## Objetivo
 
