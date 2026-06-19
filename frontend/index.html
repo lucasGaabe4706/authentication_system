@@ -6,12 +6,19 @@
     <meta name="viewport" content="width=, initial-scale=1.0">
     <title>Sistema de autenticação</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
+    <div id="toast" style="display: none;">
+    </div>
+
     <main>
         <header>
-
+            <img class="auth-image" src="../assets/images/autenticacao-de-usuario.png" alt="">
             <h1>Sistema de autenticação</h1>
             <p>Seja bem-vindo(a)</p>
         </header>
@@ -24,12 +31,11 @@
             <label for="password">
                 Senha:
             </label>
-            <input type="password" name="password" id="password">
+            <input type="password" name="password" id="password" placeholder="Digite a sua senha">
             <button>Entrar</button>
         </form>
 
-        <div id="toast" style="display: none;">
-        </div>
+
     </main>
 </body>
 
