@@ -51,17 +51,14 @@
         const senhaDigitada = passwordInput.value;
 
         if (emailDigitado.trim() === "") {
-            exibirMensagem("O e-mail não pode estar vazio")
+            exibirMensagem("O e-mail não pode estar vazio", "erro")
             return;
         } if (senhaDigitada.trim() === "") {
-            exibirMensagem("A senha não pode estar vazia")
+            exibirMensagem("A senha não pode estar vazia", "erro")
             return;
         } else {
             enviarDados(emailDigitado, senhaDigitada)
         }
-
-
-
     })
 
     async function enviarDados(email, senha) {
@@ -85,21 +82,22 @@
         if (response.ok) {
             window.location.href = 'home.html'
         } else {
-            exibirMensagem(data.erro)
+            exibirMensagem(data.erro, "erro")
         }
-
-
-
 
     }
 
-    function exibirMensagem(mensagem) {
+    function exibirMensagem(mensagem, tipo) {
         toast.style.display = "block";
         toast.textContent = mensagem
+        console.log(tipo)
+        console.log(tipo === "erro");
+        if (tipo === "erro") {
+            toast.style.backgroundColor = "red"
 
+        }
         setTimeout(function () {
             toast.style.display = "none";
-
         }, 3000);
     }
 
