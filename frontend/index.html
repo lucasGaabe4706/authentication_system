@@ -17,90 +17,48 @@
     </div>
 
     <main>
-        <header>
+        <header id="login-header">
             <img class="auth-image" src="../assets/images/autenticacao-de-usuario.png" alt="">
             <h1>Sistema de autenticação</h1>
             <p>Seja bem-vindo(a)</p>
         </header>
 
         <form action="submit" id="login-form">
-            <label for="email">
+            <label for="email" class="label-login">
                 E-mail:
             </label>
-            <input type="email" placeholder="teste@email.com" name="email" id="email">
-            <label for="password">
+            <input type="email" placeholder="teste@email.com" name="email" id="email-login" class="input-login">
+            <label for="password" class="label-login">
                 Senha:
             </label>
-            <input type="password" name="password" id="password" placeholder="Digite a sua senha">
-            <button>Entrar</button>
+            <input type="password" name="password" id="password-login" placeholder="Digite a sua senha"
+                class="input-login">
+            <button class="button-login">Entrar</button>
+            <div class="register-quest">
+                <p>Ainda não possui uma conta?</p>
+                <a id="register-button" href="">cadastre-se</a>
+            </div>
         </form>
 
+        <form action="" id="register-form" style="display: none;">
+            <label for="register-email">
+                E-mail:
+            </label>
+            <input type="email" placeholder="teste@email.com" name="email" id="register-email">
+            <label for="register-password">
+                Senha:
+            </label>
+            <input type="password" name="password" id="register-password" placeholder="Digite a sua senha">
+
+            <div class="login-quest">
+                <p>já possui uma conta?</p>
+                <a id="login-button" href="">Faça o login</a>
+            </div>
+        </form>
 
     </main>
 </body>
 
-<script>
-    const formulario = document.getElementById('login-form');
-    const emailInput = document.getElementById('email');
-    const passwordInput = document.getElementById('password')
-    const toast = document.getElementById('toast')
-
-    formulario.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const emailDigitado = emailInput.value;
-        const senhaDigitada = passwordInput.value;
-
-        if (emailDigitado.trim() === "") {
-            exibirMensagem("O e-mail não pode estar vazio", "erro")
-            return;
-        } if (senhaDigitada.trim() === "") {
-            exibirMensagem("A senha não pode estar vazia", "erro")
-            return;
-        } else {
-            enviarDados(emailDigitado, senhaDigitada)
-        }
-    })
-
-    async function enviarDados(email, senha) {
-        const url = 'http://localhost:3000/login'
-
-        const dados = {
-            email,
-            senha
-        };
-
-        const response = await fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(dados)
-        });
-
-        const data = await response.json();
-
-        if (response.ok) {
-            window.location.href = 'home.html'
-        } else {
-            exibirMensagem(data.erro, "erro")
-        }
-
-    }
-
-    function exibirMensagem(mensagem, tipo) {
-        toast.style.display = "block";
-        toast.textContent = mensagem
-        console.log(tipo)
-        console.log(tipo === "erro");
-        if (tipo === "erro") {
-            toast.style.backgroundColor = "red"
-
-        }
-        setTimeout(function () {
-            toast.style.display = "none";
-        }, 3000);
-    }
-
-</script>
+<script src="script.js"></script>
 
 </html>
