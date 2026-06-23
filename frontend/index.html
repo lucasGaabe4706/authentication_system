@@ -23,39 +23,65 @@
             <p>Seja bem-vindo(a)</p>
         </header>
 
-        <form action="submit" id="login-form">
-            <label for="email" class="label-login">
-                E-mail:
-            </label>
-            <input type="email" placeholder="teste@email.com" name="email" id="email-login" class="input-login">
-            <label for="password" class="label-login">
-                Senha:
-            </label>
-            <input type="password" name="password" id="password-login" placeholder="Digite a sua senha"
-                class="input-login">
-            <button class="button-login">Entrar</button>
-            <div class="register-quest">
-                <p>Ainda não possui uma conta?</p>
-                <a id="register-button" href="">cadastre-se</a>
-            </div>
-        </form>
+        <section id="login-section">
+            <form action="submit" id="login-form">
+                <label for="email" class="label-login">
+                    E-mail:
+                </label>
+                <input type="email" placeholder="teste@email.com" name="email" id="email-login" class="input-login">
+                <label for="password" class="label-login">
+                    Senha:
+                </label>
+                <input type="password" name="password" id="password-login" placeholder="Digite a sua senha"
+                    class="input-login">
+                <button class="button-login">Entrar</button>
+                <div class="register-quest">
+                    <p>Ainda não possui uma conta?</p>
+                    <a id="register-button" href="">cadastre-se</a>
+                </div>
+            </form>
+        </section>
 
-        <form action="" id="register-form" style="display: none;">
-            <label for="register-email">
-                E-mail:
-            </label>
-            <input type="email" placeholder="teste@email.com" name="email" id="register-email">
-            <label for="register-password">
-                Senha:
-            </label>
-            <input type="password" name="password" id="register-password" placeholder="Digite a sua senha">
+        <section id="register-section" class="hidden">
+            <form action="" id="register-form">
+                <label for="nome" class="label-register">Nome:</label>
+                <input type="" name="nome" id="register-username" placeholder="Digite o seu nome"
+                    class="input-register">
+                <label for="register-email" class="label-register">
+                    E-mail:
+                </label>
+                <input type=" email" placeholder="teste@email.com" name="email" id="register-email"
+                    class="input-register">
+                <label for="register-password" class="label-register">
+                    Senha:
+                </label>
+                <input type="password" name="password" id="register-password" placeholder="Digite a sua senha"
+                    class="input-register">
+                <div id="question-recruiter">
+                    <p>Recrutador?</p>
+                    <label class="toggle-switch">
+                        <input  id="isRecruiter" type="checkbox" value="sim">
+                        <span class="slider"></span>
+                    </label>
 
-            <div class="login-quest">
-                <p>já possui uma conta?</p>
-                <a id="login-button" href="">Faça o login</a>
-            </div>
-        </form>
+                </div>
 
+                <div id="question-company" class="question-company hidden ">
+                    <label for="nome-empresa" class="label-register">Nome da empresa?</label>
+                    <input type="text" name="nome-empresa" id="nome-empresa" class="input-register"
+                        placeholder="Digite o nome da empresa">
+                </div>
+
+                <button class="button-register">Cadastrar</button>
+
+
+                <div class="login-quest">
+                    <p>já possui uma conta?</p>
+                    <a id="login-button" href="">Faça o login</a>
+                </div>
+
+            </form>
+        </section>
     </main>
 </body>
 

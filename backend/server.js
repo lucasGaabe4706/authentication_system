@@ -3,8 +3,11 @@ const { timeStamp } = require("node:console");
 const { uptime } = require("node:process");
 const cors = require("cors");
 const app = express();
-
 const PORT = 3000;
+
+//Rotas
+const loginRouter = require("./routes/login.js");
+
 app.use(express.json());
 
 const corsOption = {
@@ -24,29 +27,12 @@ app.get("/health", (req, res) => {
 	console.log(uptime);
 });
 
-const EMAIL_VALIDO = "admin@admin.com";
-const SENHA_VALIDA = "123456";
-
-app.post("/login", (req, res) => {
-	const { email, senha } = req.body;
-
-	if (!email || !senha) {
-		return res.status(400).json({
-			erro: "Usuário e senha são obrigatórios",
-		});
-	} //validação de campo vazio. Manter dupla validação ou obrigação do back?
-
-	if (email === EMAIL_VALIDO && senha === SENHA_VALIDA) {
-		return res
-			.status(200)
-			.json({ sucesso: true, mensagem: "login realizado com sucesso" });
-	} else {
-		return res.status(401).json({ erro: "Usuário ou senha inválidos" });
-	}
-});
+app.use("/login", loginRouter);
 
 app.listen(PORT, () => {
 	console.log(
 		`Servidor rodando na porta ${PORT} - Acesse http://localhost:${PORT}`,
 	);
 });
+
+app.use("/login", loginRouter);

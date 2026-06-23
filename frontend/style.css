@@ -1,3 +1,7 @@
+* {
+	box-sizing: border-box;
+}
+
 html,
 body {
 	height: 100%;
@@ -17,9 +21,13 @@ main {
 	justify-content: center;
 	align-items: center;
 	width: 600px;
-	height: 750px;
+	min-height: 750px;
 	background-color: white;
 	border-radius: 3%;
+}
+
+#login-section {
+	width: 100%;
 }
 
 #login-header {
@@ -31,18 +39,21 @@ main {
 	width: 100px;
 }
 
-#login-form {
+#login-form,
+#register-form {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
 	padding: 5%;
 }
 
-.label-login {
+.label-login,
+.label-register {
 	margin-left: 10%;
 }
 
-.input-login {
+.input-login,
+.input-register {
 	width: 75%;
 	align-self: center;
 	height: 40px;
@@ -53,7 +64,8 @@ main {
 	margin: 20px;
 }
 
-.button-login {
+.button-login,
+.button-register {
 	width: 80%;
 	align-self: center;
 	padding: 20px;
@@ -64,13 +76,21 @@ main {
 	margin-top: 20px;
 }
 
-.button-login:hover {
+.button-login:hover,
+.button-register:hover {
 	background-color: rgb(15, 17, 122);
 	cursor: pointer;
 }
 
+.register-quest,
+.login-quest {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 #toast {
-	width: 220px;
+	width: 250px;
 	padding: 16px;
 
 	position: fixed;
@@ -89,8 +109,111 @@ main {
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.register-quest {
+#register-section {
+	width: 100%;
+}
+
+.toggle-switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.toggle-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	transition: 0.4s;
+	border-radius: 34px;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+.toggle-switch input:checked + .slider {
+	background-color: #2196f3;
+}
+
+.toggle-switch input:checked + .slider:before {
+	transform: translateX(26px);
+}
+
+.toggle-switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.toggle-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	transition: 0.4s;
+	border-radius: 34px;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	transition: 0.4s;
+	border-radius: 50%;
+}
+
+.toggle-switch input:checked + .slider {
+	background-color: #2196f3;
+}
+
+.toggle-switch input:checked + .slider:before {
+	transform: translateX(26px);
+}
+
+#question-recruiter {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.question-company {
+	display: flex;
+	flex-direction: column;
+}
+
+.hidden {
+	display: none;
 }
