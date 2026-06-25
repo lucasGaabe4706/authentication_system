@@ -12,6 +12,13 @@ const passwordInputLogin = document.getElementById("password-login");
 const registerButton = document.getElementById("register-button");
 const returnLoginButton = document.getElementById("login-button");
 
+//Formulário Registro
+const usernameRegister = document.getElementById("register-username");
+const emailInputRegister = document.getElementById("register-email");
+const passwordInputRegister = document.getElementById("register-password");
+//toggleRecruiter
+const companyRegister = document.getElementById("nome-empresa");
+
 //Componentes
 const toast = document.getElementById("toast");
 const toggleRecruiter = document.getElementById("isRecruiter");
@@ -34,16 +41,48 @@ loginForm.addEventListener("submit", function (event) {
 	}
 });
 
+registerForm.addEventListener("submit", function (event) {
+	event.preventDefault();
+	const username = usernameRegister.value;
+	const email = emailInputRegister.value;
+	const password = passwordInputRegister.value;
+	const recrutador = toggleRecruiter.checked;
+	const companyName = companyRegister.value;
+
+	if (username.trim() === "") {
+		exibirMensagem("Por favor, digite o seu nome", "aviso");
+		return;
+	}
+	if (email.trim() === "") {
+		exibirMensagem("O e-mail não pode estar vazio", "erro");
+		return;
+	}
+	if (password.trim() === "") {
+		exibirMensagem("A senha não pode estar vazia", "erro");
+		return;
+	}
+	if (recrutador === true && companyName.trim() === "") {
+		exibirMensagem("Por favor, digite o nome da empresa", "aviso");
+		return;
+	}
+	enviarDadosRegistro(username, email, password, recrutador, companyName);
+});
+
 function exibirMensagem(mensagem, tipo) {
 	toast.style.display = "block";
 	toast.textContent = mensagem;
 	if (tipo === "erro") {
 		toast.style.backgroundColor = "red";
+	} else if (tipo === "sucesso") {
+		toast.style.backgroundColor = "green";
+	} else if (tipo === "aviso") {
+		toast.style.backgroundColor = "orange";
 	}
 	setTimeout(function () {
 		toast.style.display = "none";
 	}, 3000);
 }
+
 registerButton.addEventListener("click", changeToRegister);
 returnLoginButton.addEventListener("click", changeToLogin);
 

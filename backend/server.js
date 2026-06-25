@@ -7,6 +7,7 @@ const PORT = 3000;
 
 //Rotas
 const loginRouter = require("./routes/login.js");
+const registerRouter = require("./routes/register.js");
 
 app.use(express.json());
 
@@ -28,6 +29,7 @@ app.get("/health", (req, res) => {
 });
 
 app.use("/login", loginRouter);
+app.use("/register", registerRouter);
 
 app.listen(PORT, () => {
 	console.log(

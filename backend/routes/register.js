@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const usuarios = require("../data/users");
 
 router.post("/", (req, res) => {
 	const { nome, email, senha, recrutador, nome_empresa } = req.body;
@@ -14,7 +15,15 @@ router.post("/", (req, res) => {
 			erro: "Por favor, digite o nome da empresa",
 		});
 	}
-
+	const usuario = {
+		id: usuarios.length + 1,
+		username: nome,
+		email: email,
+		password: senha,
+		recruiter: recrutador,
+		companyName: nome_empresa,
+	};
+	usuarios.push(usuario);
 	return res
 		.status(201)
 		.json({ sucesso: true, mensagem: "Cadastro realizado com sucesso" });
