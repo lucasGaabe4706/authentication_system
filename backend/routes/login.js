@@ -1,8 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
-const EMAIL_VALIDO = "admin@admin.com";
-const SENHA_VALIDA = "123456";
+const usuarios = require("../data/users");
 
 router.post("/", (req, res) => {
 	const { email, senha } = req.body;
@@ -12,8 +10,10 @@ router.post("/", (req, res) => {
 			erro: "Usuário e senha são obrigatórios",
 		});
 	}
-
-	if (email === EMAIL_VALIDO && senha === SENHA_VALIDA) {
+	const usuarioExistente = usuarios.find(function (usuario) {
+		return usuario.email === email && usuario.password === senha;
+	});
+	if (usuarioExistente) {
 		return res
 			.status(200)
 			.json({ sucesso: true, mensagem: "login realizado com sucesso" });

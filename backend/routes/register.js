@@ -23,6 +23,12 @@ router.post("/", (req, res) => {
 		recruiter: recrutador,
 		companyName: nome_empresa,
 	};
+	const usuarioExistente = usuarios.find(function (usuario) {
+		return usuario.email === email;
+	});
+	if (usuarioExistente) {
+		return res.status(409).json({ erro: "Esse e-mail já foi cadastrado" });
+	}
 	usuarios.push(usuario);
 	return res
 		.status(201)
